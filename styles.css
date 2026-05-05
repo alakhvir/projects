@@ -1,0 +1,651 @@
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #161616;
+    --surface-2: #1f1f1f;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #f0ede5;
+    --text-dim: #a8a39a;
+    --text-faint: #6b6760;
+    --accent: #d4a574;
+    --accent-glow: rgba(212, 165, 116, 0.15);
+    --done: #7fb069;
+    --done-glow: rgba(127, 176, 105, 0.2);
+    --tab-bar-h: calc(56px + env(safe-area-inset-bottom));
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Geist', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    padding-bottom: var(--tab-bar-h);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  main {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Tab panels */
+  .tab-panel { display: none; }
+  .tab-panel[data-active="true"] { display: block; animation: fade 0.2s ease; }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Bottom tab bar */
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--tab-bar-h);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .tab-bar button {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: var(--text-faint);
+    font-family: 'Geist', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 0 8px;
+    transition: color 0.15s ease;
+  }
+
+  .tab-bar button[data-active="true"] {
+    color: var(--accent);
+  }
+
+  .tab-bar svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+  }
+
+  /* Date header — Today tab */
+  .date-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .date-arrow {
+    height: 44px;
+    width: 44px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .date-arrow:active { background: var(--surface); transform: scale(0.96); }
+
+  .date-display {
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .date-display .eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+
+  .date-display .full-date {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .jump-today {
+    display: block;
+    margin: 8px auto 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .jump-today:active { background: var(--surface); }
+
+  /* Day title block */
+  .day-block { padding: 22px 20px 8px; }
+
+  .day-title {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .day-title em { font-style: italic; color: var(--accent); }
+
+  .day-subtitle {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 22px;
+  }
+
+  /* Sections */
+  .section { margin-bottom: 28px; padding: 0 20px; }
+
+  .section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .section-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .section-name {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  /* Exercise card */
+  .exercise {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s ease;
+  }
+  .exercise.done {
+    border-color: var(--done);
+    background: linear-gradient(180deg, rgba(127,176,105,0.04), transparent);
+  }
+
+  .exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .exercise-name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .exercise-name .added {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+
+  .exercise-prescription {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .exercise-note {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border);
+  }
+
+  /* Sets */
+  .sets { display: flex; flex-direction: column; gap: 6px; }
+
+  .sets-header {
+    display: grid;
+    grid-template-columns: 56px 1fr 1fr;
+    gap: 8px;
+    padding: 0 4px 4px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .sets-header div:nth-child(2),
+  .sets-header div:nth-child(3) { text-align: center; }
+
+  .set-row {
+    display: grid;
+    grid-template-columns: 56px 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .set-box {
+    height: 44px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .set-box:active { transform: scale(0.96); }
+  .set-box[data-checked="true"] {
+    background: var(--done);
+    border-color: var(--done);
+    color: #0a1505;
+    font-weight: 500;
+  }
+
+  .set-input {
+    height: 44px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    -moz-appearance: textfield;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .set-input::-webkit-outer-spin-button,
+  .set-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .set-input::placeholder { color: var(--text-faint); font-weight: 400; }
+  .set-input:focus { outline: none; border-color: var(--accent); background: var(--bg); }
+  .set-input.has-value { color: var(--text); border-color: var(--border-strong); }
+
+  /* Primer simple layout */
+  .sets.primer { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .sets.primer .set-box { flex: 1; min-width: 56px; }
+
+  /* Cardio */
+  .cardio-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .cardio-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .cardio-row:first-child { border-top: 0; padding-top: 0; }
+  .cardio-row:last-child { padding-bottom: 0; }
+  .cardio-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .cardio-detail {
+    font-size: 14px;
+    color: var(--text);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  /* Rest day */
+  .rest-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 20px;
+    text-align: center;
+    margin: 0 20px;
+  }
+  .rest-card .icon {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 64px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .rest-card .label {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .rest-card .detail {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* History tab */
+  .history-header {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .history-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  /* Calendar */
+  .cal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 14px;
+    margin-bottom: 12px;
+  }
+
+  .cal-nav button {
+    height: 36px;
+    width: 36px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .cal-month {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .cal-grid {
+    padding: 0 20px 20px;
+  }
+
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .cal-weekdays div {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: center;
+    padding: 6px 0;
+  }
+
+  .cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+
+  .cal-day {
+    aspect-ratio: 1;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--text-dim);
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+  .cal-day:active { transform: scale(0.94); }
+  .cal-day[data-empty="true"] { cursor: default; opacity: 0; pointer-events: none; }
+  .cal-day[data-rest="true"] { color: var(--text-faint); }
+  .cal-day[data-has-data="true"] { color: var(--text); background: var(--surface); border-color: var(--border); }
+  .cal-day[data-completed="true"] {
+    color: #0a1505;
+    background: var(--done);
+    border-color: var(--done);
+    font-weight: 500;
+  }
+  .cal-day[data-today="true"] {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .cal-day[data-today="true"][data-completed="true"] {
+    color: #0a1505;
+    border-color: #0a1505;
+  }
+  .cal-day[data-selected="true"] {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  /* Plan tab */
+  .plan-header { padding: 24px 20px 0; }
+  .plan-eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .plan-title {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.05;
+  }
+  .plan-title em { font-style: italic; color: var(--accent); }
+
+  .day-nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 18px;
+  }
+  .day-nav::-webkit-scrollbar { display: none; }
+
+  .day-nav-inner {
+    display: flex;
+    gap: 6px;
+    min-width: max-content;
+  }
+
+  .day-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .day-btn[aria-selected="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1108;
+  }
+
+  /* Read-only plan list */
+  .plan-list { padding: 16px 20px 0; }
+  .plan-section { margin-bottom: 24px; }
+  .plan-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .plan-row:last-child { border-bottom: 0; }
+  .plan-name { font-size: 15px; }
+  .plan-name .added {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: 2px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .plan-prescription {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* Notes block (used in Plan) */
+  .notes { padding: 24px 20px 32px; border-top: 1px solid var(--border); }
+  .notes h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .notes h2 em { font-style: italic; color: var(--accent); }
+  .note-row {
+    padding: 14px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .note-row:first-of-type { border-top: 0; }
+  .note-key {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .note-value { font-size: 14px; color: var(--text-dim); line-height: 1.55; }
+  .note-value strong { color: var(--text); font-weight: 500; }
+
+  @media (min-width: 600px) {
+    .day-title, .plan-title { font-size: 38px; }
+    .date-display .full-date { font-size: 26px; }
+  }
