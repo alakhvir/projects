@@ -1,120 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-<meta name="theme-color" content="#0a0a0a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Plan">
-<meta name="mobile-web-app-capable" content="yes">
-<title>Training Plan</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Plan" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Home</title>
 
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII=">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII=">
+    <link
+      rel="apple-touch-icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII="
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII="
+    />
 
-<link rel="manifest" href='data:application/manifest+json,{"name":"Sam%27s Training Plan","short_name":"Plan","start_url":".","display":"standalone","background_color":"%230a0a0a","theme_color":"%230a0a0a","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII=","sizes":"180x180","type":"image/png"}]}'>
+    <link
+      rel="manifest"
+      href='data:application/manifest+json,{"name":"Sam%27s Training Plan","short_name":"Plan","start_url":".","display":"standalone","background_color":"%230a0a0a","theme_color":"%230a0a0a","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEsklEQVR4nO3dS3LbOhBAUSWVkReUHWWSBWWSHWVVGbDKxZJ8IX4aYDd4z/BZ8QPb16BEffzt4+PjIX3l+9ULUF7GIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIWQcQsYhZBxCxiFkHELGIfRj8P/v39/fr//x568/g5dRwuWz+jbmryZ8eZyvrOSRaVbd49h4qGu3TSTbrPre5zhwtIf/VXUJZ9UxjjPrvlsfOWfVK47zK75PH2ln1SWOqLXeoY/Ms4qPI3aVc/eRfFbBcfT4Wc7aR/5ZRcbR76c4Xx8lZhV2nePMpZs8l33GqDKrcZfPG8tdvjTf9nBYklnF7Bxv17o+2qcbN77U/j5FFZpVQBzbV9m45ZbbPN2yolqz6v6U/ec22D6SzxuU/tmflG1WZ+NoH8beE+SWY65716TcrDruHMfuOt1z/8g5q1NxvD0vnnmmsXHMFTePirPyZYJCXeI4/1j8PieXzLM6HgcdT9RVmvYx1zqzFJ2VpxWh4DhiL+7OfXLJP6uDcWTY1TOsYYsM6zy2Bk8rQpFx9HjCcNYzS4lZHYkjwz65yLMSkmeFB1biaUUoLI5+L0KZ78xSZVbuHEK748hzEl1kW89atrXtXY87h1BMHL1f9TrT3Y5Cs3LnEDIOIeMQMg6hfe9baXyE2a57WNvfebH3G+YRfmgHJnzyI+cu2DnWi0v4Q03l2lmNjuP1CO2DXD6roXHQsdnHqwyzGv0htZ1ku1A9h3E7Rzt5N4+1JLPyoayQcQgZh5BxCBmHkHEIjYvj7UcZDVtJfklmNclFsISXSSbIfehpheY1wRzDZZjV6Pscr8dmGeTyWV1wh3R9hJbRdu2sdn9IbdTrffYKefXKYNVn5UNZIeMQMg4h4xCKiaP32xVn+oMshWblziG0O45sjxuzrWct29r2rsedQygsjn6n0pnucCyqzMqdQ+hIHHlOpXlWQvKs8MBK4v/ocOw45junLErMytOK0ME4MuyWGdawRYZ1HltD8M4Ru1vOek5Z5J+VpxWh43G0/2jU+V+I9q9Chr16u6Kz6rJznD/muU8oa5ln5WlF6FQcb//W7bFfiLe/CrXOKYuKs+q4cxw75vucUNZyzupsHO3j2XvMW4624raxKDer7vc5Po/57UcZ3XPPWMs2q93vW/nS21Wuj/bpxo0vtb9PUYVmFRPHI2KtdyhjUWVW495l3zin3vlU8qUkswrbOR5D3uI3jRKziv+jwz1MVsajyKyCH630e13kfPLPKv6hbI9XN80q+ay6XOeIfY3C3DLPqtdFsKinoe8g7aw6XiE9/zT0feScVd/L52eeabybhLOKvM7RsPFh/T2zeJJnVoPi+FTrQ72udfmsRsehQnyZoJBxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh5BxCBmHkHEIGYeQcQgZh9B/Dqx39obMG5oAAAAASUVORK5CYII=","sizes":"180x180","type":"image/png"}]}'
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<main>
-  <section class="tab-panel" data-tab="today" data-active="true">
-    <header class="date-header">
-      <button class="date-arrow" id="prevDay" aria-label="Previous day">‹</button>
-      <button class="date-display" id="dateDisplay">
-        <div class="eyebrow" id="dateEyebrow">Today</div>
-        <div class="full-date" id="dateFull">—</div>
-      </button>
-      <button class="date-arrow" id="nextDay" aria-label="Next day">›</button>
-    </header>
-    <div id="todayContent"></div>
-  </section>
-
-  <section class="tab-panel" data-tab="history">
-    <div class="history-header">
-      <div class="plan-eyebrow">All sessions · saved forever</div>
-      <h1 class="plan-title">Your <em>history</em></h1>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <a href="/training-plan/training-plan.html">Training Plan</a>
     </div>
-    <div style="padding: 20px;">
-      <div class="history-stats" id="historyStats"></div>
-    </div>
-    <div class="cal-nav">
-      <button id="calPrev" aria-label="Previous month">‹</button>
-      <div class="cal-month" id="calMonth">—</div>
-      <button id="calNext" aria-label="Next month">›</button>
-    </div>
-    <div class="cal-grid">
-      <div class="cal-weekdays">
-        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-      </div>
-      <div class="cal-days" id="calDays"></div>
-    </div>
-    <div style="padding: 0 20px 20px; font-size: 13px; color: var(--text-dim); line-height: 1.6;">
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px;">
-        <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: var(--done); border-radius: 3px;"></span>Workout completed</span>
-        <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;"></span>Partial / in progress</span>
-        <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border: 1px solid var(--accent); border-radius: 3px;"></span>Today</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="tab-panel" data-tab="plan">
-    <div class="plan-header">
-      <div class="plan-eyebrow">12-week cut · beach body build</div>
-      <h1 class="plan-title">Sam's <em>training</em> plan</h1>
-    </div>
-    <nav class="day-nav" role="tablist">
-      <div class="day-nav-inner" id="planDayNav"></div>
-    </nav>
-    <div id="planContent"></div>
-
-    <section class="notes">
-      <h2>Execution <em>notes</em></h2>
-      <div class="note-row">
-        <div class="note-key">Rest</div>
-        <div class="note-value"><strong>~90 sec</strong> on compounds. <strong>60 sec</strong> on isolation. Keep density high — don't drag rest while cutting.</div>
-      </div>
-      <div class="note-row">
-        <div class="note-key">RPE Target</div>
-        <div class="note-value"><strong>RPE 7–8</strong> on most working sets — finish with 2–3 reps in the tank. Last set can push to <strong>RPE 9</strong> (1 rep left).</div>
-      </div>
-      <div class="note-row">
-        <div class="note-key">Progression</div>
-        <div class="note-value">During a cut, the goal is to <strong>not lose strength</strong>. Add 2.5–5 lbs every 1–2 weeks on big lifts. Hit top of rep range with good form for 2 sessions in a row → bump weight.</div>
-      </div>
-      <div class="note-row">
-        <div class="note-key">The Primer</div>
-        <div class="note-value"><strong>Non-negotiable.</strong> Six minutes of dead bug / bird dog / plank protects your low back on squats and rows.</div>
-      </div>
-      <div class="note-row">
-        <div class="note-key">Track These</div>
-        <div class="note-value">Top set on <strong>goblet squat, DB bench, hip thrust, lat pulldown, seated row</strong>. If those hold or climb while bodyweight drops — you're recomping.</div>
-      </div>
-    </section>
-  </section>
-</main>
-
-<nav class="tab-bar">
-  <button data-tab-btn="today" data-active="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v3M18 4v3M5 11h14M4 8h16v12H4z"/><circle cx="12" cy="15" r="2" fill="currentColor"/></svg>
-    Today
-  </button>
-  <button data-tab-btn="history">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-    History
-  </button>
-  <button data-tab-btn="plan">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-    Plan
-  </button>
-</nav>
-
-<script src="app.js"></script>
-</body>
+  </body>
 </html>
